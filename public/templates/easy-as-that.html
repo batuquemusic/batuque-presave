@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pre-Save: Easy as That</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Helvetica Neue', sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    .logo {
+      max-width: 180px;
+      margin-bottom: 1.5rem;
+    }
+    .cover {
+      max-width: 300px;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .video {
+      max-width: 320px;
+      margin: 1rem auto;
+      display: block;
+    }
+    input, button {
+      padding: 0.8rem;
+      margin-top: 1rem;
+      font-size: 1rem;
+      width: 80%;
+      max-width: 400px;
+      border: none;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #1DB954;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #17a74a;
+    }
+  </style>
+</head>
+<body>
+  <img src="/uploads/logo-batuque.png" alt="Batuque Music" class="logo">
+  <h1>Pre-Save “Easy as That”</h1>
+  <p>By Gabriel Robella</p>
+
+  <img src="/uploads/easy-as-that.jpg" alt="Cover Art" class="cover">
+
+  <video class="video" controls autoplay muted loop>
+    <source src="/uploads/easy-as-that-teaser.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <form action="/presave/easy-as-that" method="POST">
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <button type="submit">Pre-Save on Spotify</button>
+  </form>
+</body>
+</html>
