@@ -11,6 +11,10 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+app.get('/test', (req, res) => {
+  res.send('<h1>Servidor activo</h1>');
+});
+
 // 📥 Ruta para capturar email y redirigir a Spotify
 app.post('/presave/:slug', (req, res) => {
   const email = req.body.email;
