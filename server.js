@@ -69,6 +69,10 @@ app.get('/pre-save/:slug', (req, res) => {
   }
 });
 
+app.get('/env-check', (req, res) => {
+  res.send(`Redirect URI: ${process.env.REDIRECT_URI}`);
+});
+
 // 🚀 Inicio del servidor
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
