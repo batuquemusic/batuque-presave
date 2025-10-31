@@ -31,7 +31,6 @@ app.get('/callback', async (req, res) => {
   const slug = req.query.state;
 
   try {
-    // 1. Intercambiar el code por un access token
     const tokenRes = await axios.post('https://accounts.spotify.com/api/token', null, {
       params: {
         grant_type: 'authorization_code',
@@ -45,59 +44,15 @@ app.get('/callback', async (req, res) => {
 
     const accessToken = tokenRes.data.access_token;
 
-    // 2. Buscar el ISRC por slug (ejemplo: easy-as-that → DEAR42506344)
-    const isrcMap = {
-      'easy-as-that': 'DEAR42506344',
-      // Podés agregar más campañas acá
-    };
+    // Aquí puedes guardar el track en la biblioteca del usuario si tienes el track ID
+    // Ejemplo: await axios.put('https://api.spotify.com/v1/me/tracks', { ids: ['TRACK_ID'] }, { headers: { Authorization: `Bearer ${accessToken}` } });
 
-    const isrc = isrcMap[slug];
-
-    if (!isrc) {
-      return res.send(`<h2>❌ ISRC not found for slug: ${slug}</h2>`);
-    }
-
-    // 3. Buscar el track en Spotify usando el ISRC
-    const searchRes = await axios.get('https://api.spotify.com/v1/search', {
-      params: {
-        q: `isrc:${isrc}`,
-        type: 'track'
-      },
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    });
-
-    const track = searchRes.data.tracks.items[0];
-
-    if (!track) {
-      return res.send(`<h2>❌ Track not found for ISRC: ${isrc}</h2>`);
-    }
-
-    const trackId = track.id;
-
-    // 4. Guardar el track en la biblioteca del usuario
-    await axios.put('https://api.spotify.com/v1/me/tracks', {
-      ids: [trackId]
-    }, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    });
-
-    // 5. Confirmación visual
-    res.send(`
-      <h2>✅ Pre-save successful!</h2>
-      <p>Thanks for supporting Batuque Music.</p>
-      <p>Track: ${track.name} by ${track.artists.map(a => a.name).join(', ')}</p>
-    `);
-
+    res.send(`<h2>✅ Pre-save successful for ${slug}!</h2><p>Thanks for supporting Batuque Music.</p>`);
   } catch (err) {
     console.error(err);
     res.send(`<h2>❌ Error during pre-save</h2><p>Please try again later.</p>`);
   }
 });
-
 
 // 🧩 Ruta para servir la landing por slug
 app.get('/pre-save/:slug', (req, res) => {
