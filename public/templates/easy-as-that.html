@@ -4,14 +4,27 @@
   <meta charset="UTF-8">
   <title>Pre-Save: Easy as That</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Pre-save 'Easy as That' by Gabriel Robella">
+<meta property="og:description" content="Be the first to hear it. Pre-save now.">
+<meta property="og:image" content="https://yourdomain.com/assets/easy-as-that-cover.jpg">
+<meta property="og:url" content="https://batuque-presave.onrender.com/pre-save/easy-as-that">
+<meta name="twitter:card" content="summary_large_image">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     body {
       background-color: #000;
       color: #fff;
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
       text-align: center;
       padding: 2rem;
     }
+
+
+
     .logo {
       max-width: 180px;
       margin-bottom: 1.5rem;
@@ -35,14 +48,46 @@
       border: none;
       border-radius: 4px;
     }
-    button {
-      background-color: #1DB954;
-      color: #fff;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #17a74a;
-    }
+
+button {
+  padding: 14px 24px;
+  font-size: 18px;
+  border-radius: 8px;
+  background-color: #1DB954;
+  color: white;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+  background-color: #17a74a;
+}
+
+    @media (max-width: 600px) {
+  body {
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  input, button {
+    width: 100%;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+}
   </style>
 </head>
 <body>
